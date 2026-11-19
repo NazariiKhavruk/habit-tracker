@@ -150,8 +150,7 @@ function shift(amount) {
   position: relative;
   display: grid;
   place-items: center;
-  aspect-ratio: 1;
-  min-height: 2.25rem;
+  height: clamp(2.5rem, 11vw, 3rem);
   border: 2px solid var(--border);
   border-radius: 0.65rem;
   background: var(--surface);
