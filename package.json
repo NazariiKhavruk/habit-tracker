@@ -1,6 +1,6 @@
 {
   "name": "habit-tracker",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,10 +8,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
+    "test": "vitest run",
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "check": "oxlint . && eslint . && vitest run"
   },
   "dependencies": {
     "date-fns": "^4.4.0",
@@ -40,5 +42,6 @@
   },
   "engines": {
     "node": "^22.18.0 || >=24.12.0"
-  }
+  },
+  "description": "HabitFlow — вебзастосунок для відстеження звичок (курсова робота, Vue 3)"
 }
