@@ -54,13 +54,15 @@ function validateHabit(raw, index) {
     throw new DataError(`${where}: невідома категорія`)
   }
   if (!isDateKey(createdAt)) throw new DataError(`${where}: некоректна дата створення`)
-  if (typeof archived !== 'boolean') throw new DataError(`${where}: поле archived має бути true або false`)
+  if (typeof archived !== 'boolean')
+    throw new DataError(`${where}: поле archived має бути true або false`)
 
   const achievements = raw.achievements ?? []
   if (
     !Array.isArray(achievements) ||
     !achievements.every(
-      (item) => isPlainObject(item) && THRESHOLDS.includes(item.threshold) && isDateKey(item.unlockedAt),
+      (item) =>
+        isPlainObject(item) && THRESHOLDS.includes(item.threshold) && isDateKey(item.unlockedAt),
     )
   ) {
     throw new DataError(`${where}: некоректні досягнення`)
