@@ -172,3 +172,7 @@ src/
 | Темна тема | Мобільна версія |
 | --- | --- |
 | ![Темна тема](docs/screenshots/today-dark.png) | ![Мобільна версія](docs/screenshots/mobile-today.png) |
+
+| Перший запуск (порожній список) | Налаштування (темна тема) |
+| --- | --- |
+| ![Перший запуск](docs/screenshots/today-empty.png) | ![Налаштування](docs/screenshots/settings-dark.png) |
