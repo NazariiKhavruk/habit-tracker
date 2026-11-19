@@ -145,7 +145,7 @@ src/
 
 ## Розгортання
 
-Після кожного push у `main` GitHub Actions (`.github/workflows/deploy.yml`) запускає лінтери й тести, збирає проєкт і публікує папку `dist` на GitHub Pages. Сайт лежить у підпапці `/habit-tracker/`, тому у `vite.config.js` для збірки задано `base`. Щоб прямі посилання на кшталт `/habit-tracker/habits/…` працювали, під час збірки `index.html` копіюється в `404.html`.
+Після кожного push у `main` GitHub Actions (`.github/workflows/deploy.yml`) запускає лінтери й тести, збирає проєкт і публікує папку `dist` на GitHub Pages. Сайт лежить у підпапці `/habit-tracker/`, тому у `vite.config.js` для збірки задано `base`. GitHub Pages не знає маршрутів Vue, тому пряме посилання на кшталт `/habit-tracker/habits/…` потрапляє на `public/404.html`. Ця сторінка одразу перенаправляє на `/habit-tracker/?/habits/…`, а скрипт в `index.html` повертає правильну адресу через `history.replaceState`, після чого маршрут відкриває Vue Router (прийом spa-github-pages).
 
 ## Перевірка
 

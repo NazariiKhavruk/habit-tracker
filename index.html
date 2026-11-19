@@ -8,6 +8,20 @@
     <meta name="color-scheme" content="light dark">
     <title>HabitFlow</title>
     <script>
+      // Повертаємо адресу після перенаправлення з 404.html (GitHub Pages)
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var path = l.search
+            .slice(1)
+            .split('&')
+            .map(function (part) {
+              return part.replace(/~and~/g, '&')
+            })
+            .join('?')
+          history.replaceState(null, '', l.pathname.slice(0, -1) + path + l.hash)
+        }
+      })(window.location)
+
       // Тему ставимо до завантаження Vue, щоб сторінка не блимала світлою темою
       try {
         var saved = localStorage.getItem('habitflow:theme')

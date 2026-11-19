@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <title>HabitFlow</title>
+    <script>
+      // GitHub Pages не знає маршрутів Vue, тому для адреси /habit-tracker/habits/123
+      // віддає цю сторінку. Перенаправляємо на /habit-tracker/?/habits/123,
+      // а index.html поверне правильну адресу (прийом spa-github-pages).
+      var segmentsToKeep = 1
+      var l = window.location
+      l.replace(
+        l.protocol + '//' + l.host +
+          l.pathname.split('/').slice(0, 1 + segmentsToKeep).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(segmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
