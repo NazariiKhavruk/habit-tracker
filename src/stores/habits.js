@@ -75,21 +75,14 @@ export const useHabitsStore = defineStore('habits', {
       // Даємо браузеру спершу намалювати скелетон
       await new Promise((resolve) => setTimeout(resolve, 0))
 
-      const ui = useUiStore()
+      // Перший запуск (status 'empty') починається з порожнього списку.
+      // Демо-дані користувач може завантажити сам кнопкою «Демо-дані».
       const result = loadData()
 
       if (result.status === 'ok') {
         this.habits = result.data.habits
         this.completions = result.data.completions
-      } else if (result.status === 'empty') {
-        const demo = buildDemoData(this.today)
-        this.habits = demo.habits
-        this.completions = demo.completions
-        ui.notify('Скинути їх можна в налаштуваннях.', 'info', {
-          title: 'Завантажено демо-дані',
-          timeout: 6000,
-        })
-      } else {
+      } else if (result.status === 'corrupted') {
         this.loadError =
           'Збережені дані пошкоджено, тому застосунок почав роботу з порожнім списком. ' +
           'Копію пошкодженого запису збережено окремо. Ви можете імпортувати резервну копію в налаштуваннях.'
